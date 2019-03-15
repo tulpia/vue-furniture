@@ -1,0 +1,135 @@
+@import '@/assets/scss/_variables.scss';
+@import '@/assets/scss/_fonts.scss';
+@import '@/assets/scss/_buttons.scss';
+
+body, html {
+    overflow-x: hidden;
+}
+
+.wrapper {
+    width: $wrapperDesktop;
+    margin: 0 auto;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.slider-controller {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    
+    label {
+        position: relative;
+        margin: 10px 0;
+        cursor: pointer;
+
+        .checkmark {
+            display: block;
+            position: relative;
+            height: 6px;
+            width: 6px;
+            background: $color-steelBlue;
+            border-radius: 5px;
+            transition: transform 250ms $curve;
+        }
+
+        &:hover {
+           .checkmark {
+            transform: scale(2);
+            transition: transform 250ms $curve;
+           }
+        }
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+
+            &:checked ~ .checkmark {
+                transform: scale(1.6);
+                transition: transform 250ms $curve;
+            }
+        }
+    }
+
+    &.slider-controller--horizontal {
+        top: initial;
+        left: 50%;
+        transform: translate(-50%, 0);
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+
+        label {
+            margin: 0 10px;
+        }
+    }
+}
+
+.title {
+    font-family: $font-semiBold;
+    color: $color-dark;
+    font-size: 62px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+
+    @media (max-width: 1180px) {
+        font-size: 52px;
+    }
+
+    &.title--small {
+        font-size: 38px;
+        margin-bottom: initial;
+    }
+
+    &.title--underline {
+        position: relative;
+        padding-bottom: 40px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 3px;
+            background: $color-steelBlue;
+        }
+    }
+}
+
+.subtitle {
+    font-family: $font-semiBold;
+    color: $color-dark;
+    font-size: 28px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.text {
+    font-family: $font-latoRegular;
+    font-size: 16px;
+    line-height: 1.6;
+    color: $color-lightGrey;
+
+    &.text-margin {
+        margin-bottom: 25px;
+    }
+
+    &.text--small {
+        font-size: 14px;
+    }
+
+    &.text--bold {
+        font-family: $font-semiBold;
+        color: $color-dark;
+    }
+}
